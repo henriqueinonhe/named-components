@@ -139,9 +139,9 @@ export const makeWbr = makePrimitiveComponentFactory("wbr");
 export const makeDerived =
   <Props extends { className?: string }>(
     Component: (props: Props) => JSX.Element,
-    baseClassName: string,
+    baseClassName?: string,
   ) =>
-  (props: Props): JSX.Element => {
+  (props: Props) => {
     // The `undefined` is to prevent the `className` prop from being passed
     // if no classes are specified.
     const className =
