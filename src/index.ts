@@ -135,3 +135,17 @@ export const makeUl = makePrimitiveComponentFactory("ul");
 export const makeVar = makePrimitiveComponentFactory("var");
 export const makeVideo = makePrimitiveComponentFactory("video");
 export const makeWbr = makePrimitiveComponentFactory("wbr");
+
+export const makeDerived =
+  <Props extends { className?: string }>(
+    Component: (props: Props) => JSX.Element,
+    baseClassName: string,
+  ) =>
+  (props: Props): JSX.Element => {
+    // The `undefined` is to prevent the `className` prop from being passed
+    // if no classes are specified.
+    const className =
+      [baseClassName, props.className].filter(Boolean).join(" ") || undefined;
+
+    return createElement(Component, { ...props, className });
+  };
