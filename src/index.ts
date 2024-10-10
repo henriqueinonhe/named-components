@@ -1,4 +1,4 @@
-import { ReactHTML, createElement, forwardRef } from "react";
+import { ReactHTML, ReactNode, createElement, forwardRef } from "react";
 
 const makePrimitiveComponentFactory =
   <ElementName extends keyof ReactHTML>(elementName: ElementName) =>
@@ -138,7 +138,7 @@ export const makeWbr = makePrimitiveComponentFactory("wbr");
 
 export const makeDerived =
   <Props extends { className?: string }>(
-    Component: (props: Props) => JSX.Element,
+    Component: (props: Props) => ReactNode,
     baseClassName?: string,
   ) =>
   (props: Props) => {
